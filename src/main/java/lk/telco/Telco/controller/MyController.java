@@ -62,6 +62,16 @@ public class MyController {
 		 studentservice.deleteStudent(id);
 	}
 	
+	@GetMapping("/getStudentByName/{name}")
+	public Student getStudentByName(@PathVariable String name) {
+		return studentservice.getStudentByName(name);
+	}
+	
+	@PutMapping("/updateStudentEmail")
+	public void updateStudentEmail(@RequestBody Student student) {
+		 studentservice.updateStudentEmail(student.getEmail(),student.getId());
+	}
+	
 	
 	
 
