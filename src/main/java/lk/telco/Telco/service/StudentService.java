@@ -1,6 +1,7 @@
 package lk.telco.Telco.service;
 
-import java.util.ArrayList;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +15,14 @@ import lk.telco.Telco.repository.StudentRepository;
 @Service
 public class StudentService {
 	
-	private ArrayList<Student> studentList = null;
+	
 	
 	@Autowired
 	StudentRepository studentRepository;
 	
 	public StudentService()
 	{
-		studentList =new ArrayList<Student>();
+	
 	}
 	
 	
@@ -80,6 +81,19 @@ public class StudentService {
 		
 		studentRepository.deleteById(id);
 	}
+	
+	
+	public Student getStudentByName(String name) {
+		
+		return studentRepository.getStudentByName(name);
+	}
+	
+	
+	@Transactional
+	public void updateStudentEmail(String email,String id) {
+		 studentRepository.updateStudentMail(email, id);
+	}
+	
 		
 		
 	 
